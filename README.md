@@ -40,3 +40,4 @@ https://github.com/spring-media/azubi-bootcamp-2019/tree/master/terraform
 
 * [EC2 Preisvergleiche](https://www.ec2instances.info/?region=eu-central-1)
 * [AWS data transfer costs simply explained](https://pbs.twimg.com/media/EEShRDHXYAUki8T?format=jpg&name=4096x4096)
+* http://flaws.cloud/

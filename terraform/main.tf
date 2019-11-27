@@ -3,14 +3,30 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
 
   # Allow any 2.x version of the AWS provider
   version = "~> 2.0"
 }
 
+data "aws_ami" "ubuntu" {
+    most_recent = true
+
+    filter {
+        name   = "name"
+        values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+    }
+
+    filter {
+        name   = "virtualization-type"
+        values = ["hvm"]
+    }
+
+    owners = ["099720109477"] # Canonical
+}
+
 resource "aws_launch_configuration" "example" {
-  image_id        = "ami-0c55b159cbfafe1f0"
+  image_id        = "${data.aws_ami.ubuntu.id}"
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.instance.id]
 
