@@ -3,7 +3,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-3"
+  region = "us-east-1"
 
   # Allow any 2.x version of the AWS provider
   version = "~> 2.0"
@@ -26,7 +26,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_launch_configuration" "example" {
-  image_id        = "data.aws_ami.ubuntu.id"
+  image_id        = "${data.aws_ami.ubuntu.id}"
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.instance.id]
 
